@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SuspenseAcntMonitoringModelStoreContainer" CdmEntityContainer="SuspenseAcntMonitoringEntities2">
+    <EntitySetMapping Name="File">
+      <EntityTypeMapping TypeName="SuspenseAcntMonitoringModel.File">
+        <MappingFragment StoreEntitySet="File">
+          <ScalarProperty Name="FileAN" ColumnName="FileAN" />
+          <ScalarProperty Name="Suspense_AN" ColumnName="Suspense_AN" />
+          <ScalarProperty Name="Suspense_No" ColumnName="Suspense_No" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Remind">
+      <EntityTypeMapping TypeName="SuspenseAcntMonitoringModel.Remind">
+        <MappingFragment StoreEntitySet="Remind">
+          <ScalarProperty Name="Suspense_AN" ColumnName="Suspense_AN" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="WishDate" ColumnName="WishDate" />
+          <ScalarProperty Name="BranchNotes" ColumnName="BranchNotes" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="ReplyUser" ColumnName="ReplyUser" />
+          <ScalarProperty Name="ReplyApprover" ColumnName="ReplyApprover" />
+          <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ProcessCounter" ColumnName="ProcessCounter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RemindStatus">
+      <EntityTypeMapping TypeName="SuspenseAcntMonitoringModel.RemindStatus">
+        <MappingFragment StoreEntitySet="RemindStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusTitle" ColumnName="StatusTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suspense">
+      <EntityTypeMapping TypeName="SuspenseAcntMonitoringModel.Suspense">
+        <MappingFragment StoreEntitySet="Suspense">
+          <ScalarProperty Name="AN" ColumnName="AN" />
+          <ScalarProperty Name="SapCompany" ColumnName="SapCompany" />
+          <ScalarProperty Name="SapAcntNo" ColumnName="SapAcntNo" />
+          <ScalarProperty Name="SapAccountType" ColumnName="SapAccountType" />
+          <ScalarProperty Name="SapRefNo" ColumnName="SapRefNo" />
+          <ScalarProperty Name="SapBranch" ColumnName="SapBranch" />
+          <ScalarProperty Name="SapISO" ColumnName="SapISO" />
+          <ScalarProperty Name="AbgISO" ColumnName="AbgISO" />
+          <ScalarProperty Name="SapAcntName" ColumnName="SapAcntName" />
+          <ScalarProperty Name="CustAcnt" ColumnName="CustAcnt" />
+          <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+          <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="RemindCounter" ColumnName="RemindCounter" />
+          <ScalarProperty Name="EDPL" ColumnName="EDPL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

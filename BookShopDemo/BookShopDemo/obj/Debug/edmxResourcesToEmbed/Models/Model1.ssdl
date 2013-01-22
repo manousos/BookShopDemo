@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SuspenseAcntMonitoringModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SuspenseAcntMonitoringModelStoreContainer">
+    <EntitySet Name="File" EntityType="SuspenseAcntMonitoringModel.Store.File" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Remind" EntityType="SuspenseAcntMonitoringModel.Store.Remind" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RemindStatus" EntityType="SuspenseAcntMonitoringModel.Store.RemindStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Suspense" EntityType="SuspenseAcntMonitoringModel.Store.Suspense" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_File_Remind" Association="SuspenseAcntMonitoringModel.Store.FK_File_Remind">
+      <End Role="Remind" EntitySet="Remind" />
+      <End Role="File" EntitySet="File" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remind_RemindStatus" Association="SuspenseAcntMonitoringModel.Store.FK_Remind_RemindStatus">
+      <End Role="RemindStatus" EntitySet="RemindStatus" />
+      <End Role="Remind" EntitySet="Remind" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remind_Suspense" Association="SuspenseAcntMonitoringModel.Store.FK_Remind_Suspense">
+      <End Role="Suspense" EntitySet="Suspense" />
+      <End Role="Remind" EntitySet="Remind" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="FileAN" />
+    </Key>
+    <Property Name="FileAN" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Suspense_AN" Type="int" Nullable="false" />
+    <Property Name="Suspense_No" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Remind">
+    <Key>
+      <PropertyRef Name="Suspense_AN" />
+      <PropertyRef Name="No" />
+    </Key>
+    <Property Name="Suspense_AN" Type="int" Nullable="false" />
+    <Property Name="No" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="WishDate" Type="datetime" />
+    <Property Name="BranchNotes" Type="nvarchar" />
+    <Property Name="InsertDate" Type="datetime" Nullable="false" />
+    <Property Name="ReplyUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReplyApprover" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApproveDate" Type="datetime" />
+    <Property Name="SentDate" Type="datetime" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ProcessCounter" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RemindStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="StatusTitle" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Suspense">
+    <Key>
+      <PropertyRef Name="AN" />
+    </Key>
+    <Property Name="AN" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SapCompany" Type="int" Nullable="false" />
+    <Property Name="SapAcntNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SapAccountType" Type="int" Nullable="false" />
+    <Property Name="SapRefNo" Type="nvarchar" Nullable="false" MaxLength="18" />
+    <Property Name="SapBranch" Type="nvarchar" Nullable="false" MaxLength="4" />
+    <Property Name="SapISO" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="AbgISO" Type="int" Nullable="false" />
+    <Property Name="SapAcntName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CustAcnt" Type="nvarchar" MaxLength="15" />
+    <Property Name="OpenDate" Type="datetime" Nullable="false" />
+    <Property Name="CloseDate" Type="datetime" />
+    <Property Name="InsertDate" Type="datetime" Nullable="false" />
+    <Property Name="RemindCounter" Type="int" Nullable="false" />
+    <Property Name="EDPL" Type="nvarchar" MaxLength="400" />
+  </EntityType>
+  <Association Name="FK_File_Remind">
+    <End Role="Remind" Type="SuspenseAcntMonitoringModel.Store.Remind" Multiplicity="1" />
+    <End Role="File" Type="SuspenseAcntMonitoringModel.Store.File" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Remind">
+        <PropertyRef Name="Suspense_AN" />
+        <PropertyRef Name="No" />
+      </Principal>
+      <Dependent Role="File">
+        <PropertyRef Name="Suspense_AN" />
+        <PropertyRef Name="Suspense_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remind_RemindStatus">
+    <End Role="RemindStatus" Type="SuspenseAcntMonitoringModel.Store.RemindStatus" Multiplicity="1" />
+    <End Role="Remind" Type="SuspenseAcntMonitoringModel.Store.Remind" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RemindStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remind">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remind_Suspense">
+    <End Role="Suspense" Type="SuspenseAcntMonitoringModel.Store.Suspense" Multiplicity="1" />
+    <End Role="Remind" Type="SuspenseAcntMonitoringModel.Store.Remind" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suspense">
+        <PropertyRef Name="AN" />
+      </Principal>
+      <Dependent Role="Remind">
+        <PropertyRef Name="Suspense_AN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SuspenseAcntMonitoringModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="SuspenseAcntMonitoringEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="File" EntityType="SuspenseAcntMonitoringModel.File" />
+    <EntitySet Name="Remind" EntityType="SuspenseAcntMonitoringModel.Remind" />
+    <EntitySet Name="RemindStatus" EntityType="SuspenseAcntMonitoringModel.RemindStatus" />
+    <EntitySet Name="Suspense" EntityType="SuspenseAcntMonitoringModel.Suspense" />
+    <AssociationSet Name="FK_File_Remind" Association="SuspenseAcntMonitoringModel.FK_File_Remind">
+      <End Role="Remind" EntitySet="Remind" />
+      <End Role="File" EntitySet="File" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remind_RemindStatus" Association="SuspenseAcntMonitoringModel.FK_Remind_RemindStatus">
+      <End Role="RemindStatus" EntitySet="RemindStatus" />
+      <End Role="Remind" EntitySet="Remind" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remind_Suspense" Association="SuspenseAcntMonitoringModel.FK_Remind_Suspense">
+      <End Role="Suspense" EntitySet="Suspense" />
+      <End Role="Remind" EntitySet="Remind" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="FileAN" />
+    </Key>
+    <Property Name="FileAN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Suspense_AN" Type="Int32" Nullable="false" />
+    <Property Name="Suspense_No" Type="Int32" Nullable="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Remind" Relationship="SuspenseAcntMonitoringModel.FK_File_Remind" FromRole="File" ToRole="Remind" />
+  </EntityType>
+  <EntityType Name="Remind">
+    <Key>
+      <PropertyRef Name="Suspense_AN" />
+      <PropertyRef Name="No" />
+    </Key>
+    <Property Name="Suspense_AN" Type="Int32" Nullable="false" />
+    <Property Name="No" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="WishDate" Type="DateTime" />
+    <Property Name="BranchNotes" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="InsertDate" Type="DateTime" Nullable="false" />
+    <Property Name="ReplyUser" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ReplyApprover" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ApproveDate" Type="DateTime" />
+    <Property Name="SentDate" Type="DateTime" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="ProcessCounter" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="File" Relationship="SuspenseAcntMonitoringModel.FK_File_Remind" FromRole="Remind" ToRole="File" />
+    <NavigationProperty Name="RemindStatus" Relationship="SuspenseAcntMonitoringModel.FK_Remind_RemindStatus" FromRole="Remind" ToRole="RemindStatus" />
+    <NavigationProperty Name="Suspense" Relationship="SuspenseAcntMonitoringModel.FK_Remind_Suspense" FromRole="Remind" ToRole="Suspense" />
+  </EntityType>
+  <EntityType Name="RemindStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="StatusTitle" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Remind" Relationship="SuspenseAcntMonitoringModel.FK_Remind_RemindStatus" FromRole="RemindStatus" ToRole="Remind" />
+  </EntityType>
+  <EntityType Name="Suspense">
+    <Key>
+      <PropertyRef Name="AN" />
+    </Key>
+    <Property Name="AN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SapCompany" Type="Int32" Nullable="false" />
+    <Property Name="SapAcntNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SapAccountType" Type="Int32" Nullable="false" />
+    <Property Name="SapRefNo" Type="String" Nullable="false" MaxLength="18" Unicode="true" FixedLength="false" />
+    <Property Name="SapBranch" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+    <Property Name="SapISO" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+    <Property Name="AbgISO" Type="Int32" Nullable="false" />
+    <Property Name="SapAcntName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CustAcnt" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="OpenDate" Type="DateTime" Nullable="false" />
+    <Property Name="CloseDate" Type="DateTime" />
+    <Property Name="InsertDate" Type="DateTime" Nullable="false" />
+    <Property Name="RemindCounter" Type="Int32" Nullable="false" />
+    <Property Name="EDPL" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Remind" Relationship="SuspenseAcntMonitoringModel.FK_Remind_Suspense" FromRole="Suspense" ToRole="Remind" />
+  </EntityType>
+  <Association Name="FK_File_Remind">
+    <End Role="Remind" Type="SuspenseAcntMonitoringModel.Remind" Multiplicity="1" />
+    <End Role="File" Type="SuspenseAcntMonitoringModel.File" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Remind">
+        <PropertyRef Name="Suspense_AN" />
+        <PropertyRef Name="No" />
+      </Principal>
+      <Dependent Role="File">
+        <PropertyRef Name="Suspense_AN" />
+        <PropertyRef Name="Suspense_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remind_RemindStatus">
+    <End Role="RemindStatus" Type="SuspenseAcntMonitoringModel.RemindStatus" Multiplicity="1" />
+    <End Role="Remind" Type="SuspenseAcntMonitoringModel.Remind" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RemindStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remind">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remind_Suspense">
+    <End Role="Suspense" Type="SuspenseAcntMonitoringModel.Suspense" Multiplicity="1" />
+    <End Role="Remind" Type="SuspenseAcntMonitoringModel.Remind" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suspense">
+        <PropertyRef Name="AN" />
+      </Principal>
+      <Dependent Role="Remind">
+        <PropertyRef Name="Suspense_AN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

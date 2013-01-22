@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCDemo", "MVCDemo.csproj", "{DEB37208-767B-40BB-9871-11620B00D8FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "..\DAO\DAO.csproj", "{B16319FB-2E94-40B1-9B28-A82646C30F9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEB37208-767B-40BB-9871-11620B00D8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEB37208-767B-40BB-9871-11620B00D8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEB37208-767B-40BB-9871-11620B00D8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEB37208-767B-40BB-9871-11620B00D8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B16319FB-2E94-40B1-9B28-A82646C30F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B16319FB-2E94-40B1-9B28-A82646C30F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B16319FB-2E94-40B1-9B28-A82646C30F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B16319FB-2E94-40B1-9B28-A82646C30F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
