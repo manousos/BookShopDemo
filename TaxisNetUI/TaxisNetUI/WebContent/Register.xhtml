@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Εγγραφή</title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+
+	<h:form>
+
+		<table>
+			<tr>
+				<th>Επιλέξτε username και κωδικό</th>
+			</tr>
+			<tr>
+				<td>Username</td>
+				<td><h:inputText value="#{registerBean.userName}"
+						required="true" requiredMessage="Πρέπει να εισάγετε Username"
+						validatorMessage="Ελάχιστο μήκος 2 χαρακτήρες" id="username">
+						<f:validateLength minimum="2" />
+					</h:inputText></td>
+				<td><h:messages for="username" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Κωδικός</td>
+				<td><h:inputSecret value="#{registerBean.password}"
+						binding="#{password}" required="true"
+						requiredMessage="Πρέπει να εισάγετε Κωδικό"
+						validatorMessage="Ελάχιστο μήκος 6 χαρακτήρες" id="password">
+						<f:validateLength minimum="6" />
+					</h:inputSecret></td>
+				<td><h:messages for="password" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Επιβεβαίωση κωδικού</td>
+				<td><h:inputSecret value="#{registerBean.repeatPassword}"
+						required="true"
+						requiredMessage="Πρέπει να εισάγετε Επιβεβαίωση κωδικού"
+						validator="#{registerBean.validatePassword}" id="validPassword">
+						<f:attribute name="password" value="#{password}"></f:attribute>
+					</h:inputSecret></td>
+				<td><h:message for="validPassword" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<th>Συμπληρώστε τον ΑΦΜ και το ονοματεπώνυμό σας</th>
+			</tr>
+			<tr>
+				<!-- 	converterMessage="To ΑΦΜ αποτελείται από αριθμούς" >
+						<f:validateLongRange minimum="9" maximum="9" /> -->
+				<td>ΑΦΜ</td>
+				<td><h:inputText value="#{registerBean.afm}" required="true"
+						requiredMessage="Πρέπει να εισάγετε ΑΦΜ"
+						validatorMessage="To ΑΦΜ αποτελείται από 9 ψηφία" id="afm">
+						<f:validateRegex pattern="^[0-9]{9}$" />
+					</h:inputText></td>
+				<td><h:messages for="afm" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Επώνυμο</td>
+				<td><h:inputText value="#{registerBean.lastName}"
+						required="true" requiredMessage="Πρέπει να εισάγετε Επώνυμο"
+						validatorMessage="Έχετε εισάγει μη έγκυρους χαρακτήρες"
+						id="lastName">
+						<f:validateRegex pattern="^[a-zA-ZΑ-Ωα-ωΆΉΊΈΌΏΎάήίόώύ]+$" />
+					</h:inputText></td>
+				<td><h:messages for="lastName" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Όνομα</td>
+				<td><h:inputText value="#{registerBean.firstName}"
+						required="true" requiredMessage="Πρέπει να εισάγετε Όνομα"
+						validatorMessage="Έχετε εισάγει μη έγκυρους χαρακτήρες"
+						id="firstName">
+						<f:validateRegex pattern="^[a-zA-ZΑ-Ωα-ωΆΉΊΈΌΏΎάήίόώύ]+$" />
+					</h:inputText></td>
+				<td><h:messages for="firstName" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Όνομα Πατρός</td>
+				<td><h:inputText value="#{registerBean.fatherName}"
+						required="true" requiredMessage="Πρέπει να εισάγετε Όνομα Πατρός"
+						validatorMessage="Έχετε εισάγει μη έγκυρους χαρακτήρες"
+						id="fatherName">
+						<f:validateRegex pattern="^[a-zA-ZΑ-Ωα-ωΆΉΊΈΌΏΎάήίόώύ]+$" />
+					</h:inputText></td>
+				<td><h:messages for="fatherName" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<th>Συμπληρώστε τα στοιχεία επικοινωνίας σας</th>
+			</tr>
+			<tr>
+				<td>E-mail</td>
+				<td><h:inputText value="#{registerBean.email}" required="true"
+						requiredMessage="Πρέπει να εισάγετε E-mail"
+						validatorMessage="Έχετε εισάγει μη έγκυρους χαρακτήρες" id="email">
+						<f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</h:inputText></td>
+				<td><h:message for="email" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Αρ. τηλεφώνου</td>
+				<td><h:inputText value="#{registerBean.phone}" required="true"
+						requiredMessage="Πρέπει να εισάγετε Αρ. τηλεφώνου"
+						validatorMessage="Έχετε εισάγει μη έγκυρους χαρακτήρες, επιτρεπτή μορφή +30210123456789"
+						id="phone">
+						<f:validateRegex pattern="^\+(?:[0-9] ?){6,14}[0-9]$" />
+					</h:inputText></td>
+				<td><h:message for="phone" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Αρ. κινητού τηλεφώνου</td>
+				<td><h:inputText value="#{registerBean.cell}" required="true"
+						requiredMessage="Πρέπει να εισάγετε Αρ. κινητού τηλεφώνου"
+						validatorMessage="Έχετε εισάγει μη έγκυρους χαρακτήρες, επιτρεπτή μορφή +30691123456789"
+						id="cell">
+						<f:validateRegex pattern="^\+(?:[0-9] ?){6,14}[0-9]$" />
+					</h:inputText></td>
+				<td><h:message for="cell" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Fax</td>
+				<td><h:inputText value="#{registerBean.fax}"
+						validatorMessage="Έχετε εισάγει μη έγκυρους χαρακτήρες, επιτρεπτή μορφή +30210123456789"
+						id="fax">
+						<f:validateRegex pattern="^\+(?:[0-9] ?){6,14}[0-9]$" />
+					</h:inputText></td>
+				<td><h:message for="fax" styleClass="error" /></td>
+			</tr>
+			<tr>
+				<td><h:commandButton type="submit" value="Submit"
+						action="#{registerBean.submit}" /></td>
+			</tr>
+		</table>
+		<div id="error">
+			<h:outputText value="#{registerBean.error}"></h:outputText>
+		</div>
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>E2</title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+
+	<h:form>
+		<div id="error">
+			<h:outputText value="#{e2Bean.error}"></h:outputText>
+		</div>
+		<h3>
+			Ε2 ΑΝΑΛΥΤΙΚΗ ΚΑΤΑΣΤΑΣΗ ΓΙΑ ΤΑ ΜΙΣΘΩΜΑΤΑ ΑΚΙΝΗΤΩΝ <br></br> ΟΙΚΟΝ.
+			ΕΤΟΥΣ 2012
+		</h3>
+		<h4>Εισοδήματα από 1/1 έως 31/12/2011</h4>
+
+		<table>
+			<tr>
+				<td><b>ΣΤΟΙΧΕΙΑ ΕΙΣΟΔΗΜΑΤΑ</b> (ΦΥΣΙΚΟΥ Ή ΝΟΜΙΚΟΥ ΠΡΟΣΩΠΟΥ)</td>
+			</tr>
+			<tr>
+				<td>ΟΝΟΜΑΤΕΠΩΝΥΜΟ Ή ΕΠΩΝΥΜΙΑ</td>
+				<td><h:outputText value="#{e2Bean.rentierFullName}">
+						</h:outputText></td>
+			</tr>
+			<tr>
+				<td>ΟΝΟΜΑ ΠΑΤΕΡΑ</td>
+				<td><h:outputText value="#{e2Bean.rentierFatherName}">
+						</h:outputText></td>
+			</tr>
+			<tr>
+				<td>ΑΦΜ</td>
+				<td><h:outputText value="#{e2Bean.rentierAFM}">
+						</h:outputText></td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<th>ΠΕΡΙΓΡΑΦΗ ΑΚΙΝΗΤΟΥ</th>
+			</tr>
+			<tr>
+				<td>ΤΟΠΟΘΕΣΙΑ (Οδός-Αριθ.-Πόλη ή Χωριό-Θέση-ΤΚ)</td>
+				<td><h:inputText value="#{e2Bean.rnLocation}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΘΕΣΗ (ισόγειο, 1ος όρ. , 2ος όρ. κτλ.)</td>
+				<td><h:inputText value="#{e2Bean.rnPoint}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΧΡΗΣΗ (οικία,κατ/μα,γραφ.,αγρός κτλ.)</td>
+				<td><h:inputText value="#{e2Bean.rnUsage}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΕΠΙΦΑΝEIA (σε τ.μ. ή στρέμ.)</td>
+				<td><h:inputText value="#{e2Bean.rnArea}"></h:inputText></td>
+			</tr>
+			<tr>
+				<th>ΣΤΟΙΧΕΙΑ ΕΝΟΙΚΙΑΣΤΗ</th>
+			</tr>
+			<tr>
+				<td>Ονοματεπωνυμο</td>
+				<td><h:inputText value="#{e2Bean.rnFullName}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>Α.Φ.Μ</td>
+				<td><h:inputText value="#{e2Bean.rnAFM}"></h:inputText></td>
+			</tr>
+			<tr>
+				<th>ΔΙΑΡΚΕΙΑ ΕΝΟΙΚΙΑΣΗΣ</th>
+			</tr>
+			<tr>
+				<td>ΑΠΟ</td>
+				<td><h:inputText value="#{e2Bean.fromMonth}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΕΩΣ</td>
+				<td><h:inputText value="#{e2Bean.toMonth}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΜΗΝΕΣ</td>
+				<td><h:inputText value="#{e2Bean.totalMonth}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΠΡΑΓΜΑΤΙΚΟ Ή <br /> ΤΕΚΜΑΡΤΟ ΜΗΝΙΑΙΟ ΜΙΣΘΩΜΑ
+				</td>
+				<td><h:inputText value="#{e2Bean.rnRent}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΠΟΣΟΣΤΟ ΣΥΝΔ/ΣΙΑΣ (%)</td>
+				<td><h:inputText value="#{e2Bean.rnPesr}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>Κατοικιών <br></br> Ξενοδοχείων<br></br> Κλινών <br></br>
+					Θεάτρων κτλ
+				</td>
+				<td><h:inputText value="#{e2Bean.revFreeBuilding}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>Καταστημώτων <br></br> Γραφείων <br></br>
+					Βιομηχανοεγκαταστάσεων <br></br> Αποθηκών κτλ.<br></br>
+				</td>
+				<td><h:inputText value="#{e2Bean.revFreeOffice}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>Γηπαίδων - Γεών <br></br> Οικοδομών σε έδαφος <br></br> του
+					εκμισθωτή - <br></br> χώρων επιγραφών κτλ.
+				</td>
+				<td><h:inputText value="#{e2Bean.revFreeLand}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>Ξενοδοχείων κτλ.</td>
+				<td><h:inputText value="#{e2Bean.revPropHotel}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>Καταστημώτων <br></br> Γραφείων κτλ.
+				</td>
+				<td><h:inputText value="#{e2Bean.revPropOffice}"></h:inputText></td>
+			</tr>
+			<tfoot>
+				<tr>
+					<td><h:commandButton value="Προσθήκη"
+							action="#{e2Bean.addEstatesRevenue}"></h:commandButton></td>
+				</tr>
+			</tfoot>
+		</table>
+
+		<h:dataTable value="#{e2Bean.rnEstateList}" var="pl"
+			rendered="#{e2Bean.dtEstLstVisible}">
+			<h:column>
+				<f:facet name="header">ΤΟΠΟΘΕΣΙΑ</f:facet>
+				<h:outputText value="#{pl.location}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΘΕΣΗ</f:facet>
+				<h:outputText value="#{pl.point}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΧΡΗΣΗ </f:facet>
+				<h:outputText value="#{pl.usage}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΕΠΙΦΑΝEIA</f:facet>
+				<h:outputText value="#{pl.area}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ονοματεπωνυμο</f:facet>
+				<h:outputText value="#{pl.rnFullName}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Α.Φ.Μ</f:facet>
+				<h:outputText value="#{pl.rnAFM}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΑΠΟ</f:facet>
+				<h:outputText value="#{pl.fromMonth}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΕΩΣ</f:facet>
+				<h:outputText value="#{pl.toMonth}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΜΗΝΕΣ</f:facet>
+				<h:outputText value="#{pl.totalMonth}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΠΡΑΓΜΑΤΙΚΟ Ή ΤΕΚΜΑΡΤΟ ΜΗΝΙΑΙΟ ΜΙΣΘΩΜΑ</f:facet>
+				<h:outputText value="#{pl.rent}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΠΟΣ. ΣΥΝΔ/ΣΙΑΣ (%)</f:facet>
+				<h:outputText value="#{pl.rnPesr}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Κατοικιών <br></br> Ξενοδοχείων<br></br> Κλινών <br></br>
+					Θεάτρων κτλ</f:facet>
+				<h:outputText value="#{pl.revFreeBuilding}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Καταστημώτων <br></br> Γραφείων <br></br>
+					Βιομηχανοεγκαταστάσεων <br></br> Αποθηκών κτλ.</f:facet>
+				<h:outputText value="#{pl.revFreeOffice}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Γηπαίδων - Γεών <br></br> Οικοδομών σε έδαφος <br></br> του
+					εκμισθωτή - <br></br> χώρων επιγραφών κτλ.</f:facet>
+				<h:outputText value="#{pl.revFreeLand}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ξενοδοχείων κτλ.</f:facet>
+				<h:outputText value="#{pl.revPropHotel}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Καταστημώτων <br></br> Γραφείων κτλ.</f:facet>
+				<h:outputText value="#{pl.revPropOffice}"></h:outputText>
+			</h:column>
+			<h:column>
+				<h:commandLink value="Διαγραφή"
+					action="#{e2Bean.deleteEstatesRevenue(pl)}" />
+			</h:column>
+		</h:dataTable>
+
+		<h:panelGroup rendered="#{e2Bean.pnPartialEstates}">
+			<h3>ΣΥΜΠΛΗΡΩΜΑΤΙΚΑ ΣΤΟΙΧΕΙΑ ΑΚΙΝΗΤΩΝ</h3>
+			<h3>I. ΕΚΜΙΣΘΟΥΜΕΝΑ ΚΤΛ. ΑΚΙΝΗΤΑ</h3>
+			<table>
+				<tr>
+					<th>ΣΤΟΙΧΕΙΑ ΑΚΙΝΗΤΟΥ</th>
+				</tr>
+				<tr>
+					<td>ΤΟΠΟΘΕΣΙΑ (Οδός-Αριθ.-Πόλη ή Χωριό-Θέση-ΤΚ)</td>
+					<td><h:inputText value="#{e2Bean.location}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>ΘΕΣΗ (ισόγειο, 1ος όρ. , 2ος όρ. κτλ.)</td>
+					<td><h:inputText value="#{e2Bean.point}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>ΧΡΗΣΗ (οικία,κατ/μα,γραφ.,αγρός κτλ.)</td>
+					<td><h:inputText value="#{e2Bean.usage}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>ΕΠΙΦΑΝEIA (σε τ.μ. ή στρέμ.)</td>
+					<td><h:inputText value="#{e2Bean.area}"></h:inputText></td>
+				</tr>
+				<tr>
+					<th>ΣΤΟΙΧΕΙΑ ΣΥΝΙΔΙΟΚΤΗΤΩΝ, <br />ΣΥΝΕΠΙΚΑΡΠΩΤΩΝ ΚΤΛ.
+						ΑΚΙΝΗΤΩΝ
+					</th>
+				</tr>
+				<tr>
+					<td>Ονοματεπωνυμο</td>
+					<td><h:inputText value="#{e2Bean.coFullName}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>Α.Φ.Μ</td>
+					<td><h:inputText value="#{e2Bean.coAFM}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>Διεύθυνση συνιδιοκτήτη</td>
+					<td><h:inputText value="#{e2Bean.coAddress}"></h:inputText></td>
+				</tr>
+				<tr>
+					<td>ΠΟΣ. ΣΥΝΔ/ΣΙΑΣ (%)</td>
+					<td><h:inputText value="#{e2Bean.cOwnPesr}"></h:inputText></td>
+				</tr>
+				<tr>
+					<th>ΥΠΕΚΜΙΣΘΩΣΕΙΣ</th>
+				</tr>
+				<tr>
+					<td>Μίσθωμα που καταβλήθηκε</td>
+					<td><h:inputText value="#{e2Bean.rent}"></h:inputText></td>
+				</tr>
+				<tfoot>
+					<tr>
+						<!-- 					<td></td> -->
+						<td><h:commandButton value="Προσθήκη"
+								action="#{e2Bean.addPartialEstateAction}"></h:commandButton></td>
+					</tr>
+				</tfoot>
+			</table>
+
+			<h:dataTable value="#{e2Bean.partialEstateLst}" var="pl"
+				rendered="#{e2Bean.dtPartialEstLstVisible}">
+				<h:column>
+					<f:facet name="header">ΤΟΠΟΘΕΣΙΑ</f:facet>
+					<h:outputText value="#{pl.location}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ΘΕΣΗ</f:facet>
+					<h:outputText value="#{pl.point}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ΧΡΗΣΗ </f:facet>
+					<h:outputText value="#{pl.usage}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ΕΠΙΦΑΝEIA</f:facet>
+					<h:outputText value="#{pl.area}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Ονοματεπωνυμο</f:facet>
+					<h:outputText value="#{pl.coFullName}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Α.Φ.Μ</f:facet>
+					<h:outputText value="#{pl.coAFM}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Διεύθυνση συνιδιοκτήτη</f:facet>
+					<h:outputText value="#{pl.coAddress}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ΠΟΣ. ΣΥΝΔ/ΣΙΑΣ (%)</f:facet>
+					<h:outputText value="#{pl.cOwnPers}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Μίσθωμα που καταβλήθηκε</f:facet>
+					<h:outputText value="#{pl.coRent}"></h:outputText>
+				</h:column>
+				<h:column>
+					<h:commandLink value="Διαγραφή"
+						action="#{e2Bean.deletePartialEstateAction(pl)}" />
+				</h:column>
+			</h:dataTable>
+		</h:panelGroup>
+
+		<h3>ΙΙ. ΑΚΙΝΗΤΑ ΠΟΥ ΤΟ 2011 ΕΙΝΑΙ ΗΜΙΤΕΛΗ Ή ΜΕΤΑΒΙΒΑΣΤΗΚΑΝ Ή
+			ΑΠΟΚΤΗΘΗΚΑΝ ΑΠΟ ΑΓΟΡΑ - ΚΛΗΡΟΝΟΜΙΑ - ΔΩΡΕΑ - ΓΟΝΙΚΗ ΠΑΡΟΧΗ ΚΤΛ.</h3>
+
+		<table>
+			<tr>
+				<th>ΣΤΟΙΧΕΙΑ ΑΚΙΝΗΤΟΥ</th>
+			</tr>
+			<tr>
+				<td>ΤΟΠΟΘΕΣΙΑ (Οδός-Αριθ.-Πόλη ή Χωριό-Θέση-ΤΚ)</td>
+				<td><h:inputText value="#{e2Bean.location2}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΘΕΣΗ (ισόγειο, 1ος όρ. , 2ος όρ. κτλ.)</td>
+				<td><h:inputText value="#{e2Bean.point2}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΧΡΗΣΗ (οικία,κατ/μα,γραφ.,αγρός κτλ.)</td>
+				<td><h:inputText value="#{e2Bean.usage2}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΕΠΙΦΑΝEIA (σε τ.μ. ή στρέμ.)</td>
+				<td><h:inputText value="#{e2Bean.area2}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td>ΤΙΤΛΟΣ ΚΤΗΣΗΣ Ή ΜΕΤΑΒΙΒΑΣΗΣ ΑΚΙΝΗΤΟΥ, <br /> ΑΡΙΘΜ.
+					ΣΥΜΒΟΛΑΙΟΥ, <br /> ΟΝΟΜ/ΜΟ ΣΥΜΒΟΛΑΙΟΓΡΑΦΟΥ
+				</td>
+				<td><h:inputText value="#{e2Bean.titleProp}"></h:inputText></td>
+			</tr>
+			<tfoot>
+				<tr>
+					<td><h:commandButton value="Προσθήκη"
+							action="#{e2Bean.addOtherEstatesAction}"></h:commandButton></td>
+				</tr>
+			</tfoot>
+		</table>
+
+		<h:dataTable value="#{e2Bean.otherEstateLst}" var="pl"
+			rendered="#{e2Bean.dtOtherEstLstVisible}">
+			<h:column>
+				<f:facet name="header">ΤΟΠΟΘΕΣΙΑ</f:facet>
+				<h:outputText value="#{pl.location}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΘΕΣΗ</f:facet>
+				<h:outputText value="#{pl.point}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΧΡΗΣΗ </f:facet>
+				<h:outputText value="#{pl.usage}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΕΠΙΦΑΝEIA </f:facet>
+				<h:outputText value="#{pl.area}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ΤΙΤΛΟΣ ΚΤΗΣΗΣ Ή ΜΕΤΑΒΙΒΑΣΗΣ ΑΚΙΝΗΤΟΥ, <br />
+		ΑΡΙΘΜ. ΣΥΜΒΟΛΑΙΟΥ, <br /> ΟΝΟΜ/ΜΟ ΣΥΜΒΟΛΑΙΟΓΡΑΦΟΥ </f:facet>
+				<h:outputText value="#{pl.titleProp}"></h:outputText>
+			</h:column>
+			<h:column>
+				<h:commandLink value="Διαγραφή"
+					action="#{e2Bean.deleteOtherEstates(pl)}" />
+			</h:column>
+		</h:dataTable>
+
+		<table>
+			<tr>
+				<td><h:commandButton value="Αποθήκευση"
+						action="#{e2Bean.saveE2}"></h:commandButton></td>
+				<td></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>
